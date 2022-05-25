@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1> Add your skills </h1>
+    <form action="/skills" method="POST">
+      <!-- post request to skills  -->
+      <label>Add Skill:
+        <input type="text" name="newSkill">
+      </label><br>
+      <input type="submit" value="Add Skill">
+    </form>
+  </body>
+</html>

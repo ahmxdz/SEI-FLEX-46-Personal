@@ -1,0 +1,527 @@
+> db
+test
+> 
+> 
+> use myDB
+switched to db myDB
+> 
+> 
+> 
+> db
+myDB
+> 
+> 
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> 
+> 
+> db
+myDB
+> 
+> db.people.insert({
+... 
+... 
+> db.people.insert({
+... name: "Han",
+... city: "Toronto"
+... }
+... )
+WriteResult({ "nInserted" : 1 })
+> 
+> 
+> db.people
+myDB.people
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto" }
+> 
+> 
+> 
+> db.people.insert({
+... name: "Sherysse",
+... city: "Vaughan"
+... })
+WriteResult({ "nInserted" : 1 })
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto" }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Vaughan" }
+> 
+> 
+> db.people.insert({
+... name: "Jessica",
+... city: "Hamilton"^C
+
+> 
+> show collections
+people
+> 
+> 
+> db.books.insert({
+... name: "Harry Potter",
+... author: "JK Rowling"
+... })
+WriteResult({ "nInserted" : 1 })
+> 
+> 
+> show collections
+books
+people
+> 
+> 
+> db.people.insert([
+... {name: "Jessica", city: "Hamilton"},
+... {name: "George", city: "Oakville"}
+... ])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 2,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> 
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto" }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Vaughan" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+> 
+> 
+> db.people.insertOne({
+... name: "Raj", city: "Brampton"
+... })
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("61f9dc0f1245058de346f895")
+}
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto" }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Vaughan" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+> 
+> 
+> db.people.find({})
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto" }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Vaughan" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+> 
+> 
+> db.people.find({name: "Jessica"})
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+> 
+> 
+> db.people.insert({name: "Ahmed", city: "Toronto"})
+WriteResult({ "nInserted" : 1 })
+> 
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto" }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Vaughan" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto" }
+> 
+> 
+> db.people.find({city: "Toronto"})
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto" }
+> 
+> 
+> db.people.findOne({city: "Toronto"})
+{
+        "_id" : ObjectId("61f9d97f1245058de346f890"),
+        "name" : "Han",
+        "city" : "Toronto"
+}
+> 
+> 
+> db.people.find({_id: ObjectId("61f9db871245058de346f894")})
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+> 
+> 
+> 
+> db.people.findTwo({city: "Toronto"})
+uncaught exception: TypeError: db.people.findTwo is not a function :
+@(shell):1:1
+> 
+> 
+> db.people.update({name: "Sherysse"}, {city: "Mississauga"})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> 
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto" }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto" }
+> 
+> 
+> db.people.update({name: "Sherysse"}, {city: "Mississauga"})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto" }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto" }
+
+
+
+> db.people.update({_id: ObjectId("61f9da081245058de346f891")}, {name: "Sherysse", city: "Mississauga"})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> 
+> 
+> db.people.find({})
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto" }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto" }
+> 
+> 
+> db.people.update({city: "Toronto"}, {$set: {city: "Toronno"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> 
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronno" }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto" }
+> 
+> 
+> db.people.updateMany({city: "Toronto"}, {$set: {city: "Toronno"}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> 
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronno" }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronno" }
+> 
+> 
+> 
+> db.people.updateMany({city: "Toronno"},
+... {$set: {
+... city: "Toronto"
+... }
+... }
+... )
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
+> 
+> 
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto" }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto" }
+> 
+> 
+> db.people.insert({
+... _id: 1234,
+... name: "Ashwin",
+... city: "Mississauga",
+... gender: "male"
+... })
+WriteResult({ "nInserted" : 1 })
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto" }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto" }
+{ "_id" : 1234, "name" : "Ashwin", "city" : "Mississauga", "gender" : "male" }
+> 
+> 
+> 
+> db.people.insert({
+... _id: 1234,
+... name: "Valerie",
+... city: "Niagara"
+... })
+WriteResult({
+        "nInserted" : 0,
+        "writeError" : {
+                "code" : 11000,
+                "errmsg" : "E11000 duplicate key error collection: myDB.people index: _id_ dup key: { _id: 1234.0 }"
+        }
+})
+> 
+> db.people.insert({ _id: 1234, name: "Valerie", city: "Niagara" },
+... {upsert: true}
+... )
+WriteResult({
+        "nInserted" : 0,
+        "writeError" : {
+                "code" : 11000,
+                "errmsg" : "E11000 duplicate key error collection: myDB.people index: _id_ dup key: { _id: 1234.0 }"
+        }
+})
+
+
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto" }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto" }
+{ "_id" : 1234, "name" : "Ashwin", "city" : "Mississauga", "gender" : "male" }
+> 
+> 
+> 
+> db.people.update({
+... _id: 1234
+... }, {
+... "name": "Valerie",
+... "city": "Niagara"
+... })
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto" }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto" }
+{ "_id" : 1234, "name" : "Valerie", "city" : "Niagara" }
+> 
+> 
+> db.people.update({ _id: 12345 }, { "name": "Valerie", "city": "Niagara" })
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> 
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto" }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto" }
+{ "_id" : 1234, "name" : "Valerie", "city" : "Niagara" }
+> 
+> db.people.update({ _id: 12345 }, { "name": "Valerie", "city": "Niagara" }, {upsert: true})
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : 12345 })
+> 
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto" }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto" }
+{ "_id" : 1234, "name" : "Valerie", "city" : "Niagara" }
+{ "_id" : 12345, "name" : "Valerie", "city" : "Niagara" }
+> 
+> 
+> db.people.update({ _id: 12345 }, { "name": "Valerie", "city": "Niagara" }, {upsert: true})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+
+> db.people.update({city: "Toronto"}, {$set: {
+... hasHarbourFront: true
+... }})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> 
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto", "hasHarbourFront" : true }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto" }
+{ "_id" : 1234, "name" : "Valerie", "city" : "Niagara" }
+{ "_id" : 12345, "name" : "Valerie", "city" : "Niagara" }
+> 
+> 
+> db.people.update({city: "Toronto"}, {$set: { hasHarbourFront: true }}, {multi: true})
+WriteResult({ "nMatched" : 2, "nUpserted" : 0, "nModified" : 1 })
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto", "hasHarbourFront" : true }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto", "hasHarbourFront" : true }
+{ "_id" : 1234, "name" : "Valerie", "city" : "Niagara" }
+{ "_id" : 12345, "name" : "Valerie", "city" : "Niagara" }
+> 
+> 
+> 
+> db.people.insert({
+... name: "Ashwin"
+... ,
+... city: "Mississauga",
+... favColours: ["blue", "coral", "teal"]
+... })
+WriteResult({ "nInserted" : 1 })
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto", "hasHarbourFront" : true }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto", "hasHarbourFront" : true }
+{ "_id" : 1234, "name" : "Valerie", "city" : "Niagara" }
+{ "_id" : 12345, "name" : "Valerie", "city" : "Niagara" }
+{ "_id" : ObjectId("61f9f09ecff66bbef603831f"), "name" : "Ashwin", "city" : "Mississauga", "favColours" : [ "blue", "coral", "teal" ] }
+> 
+> 
+> db.people.update({name: 'Ashwin'}, {$set: {booksRead: [{name: 'Hit Refresh', author: 'Satya Nadella', publishYear: 2020}]}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> 
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto", "hasHarbourFront" : true }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto", "hasHarbourFront" : true }
+{ "_id" : 1234, "name" : "Valerie", "city" : "Niagara" }
+{ "_id" : 12345, "name" : "Valerie", "city" : "Niagara" }
+{ "_id" : ObjectId("61f9f09ecff66bbef603831f"), "name" : "Ashwin", "city" : "Mississauga", "favColours" : [ "blue", "coral", "teal" ], "booksRead" : [ { "name" : "Hit Refresh", "author" : "Satya Nadella", "publishYear" : 2020 } ] }
+> 
+> db.people.update({name: 'Ashwin'}, {
+... $set: {
+... userConfig: {
+... languagePreference: 'EN',
+... theme: 'dark'
+... }
+... }
+... }
+... )
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> 
+> 
+> db.people.find({name: 'Ashwin'})
+{ "_id" : ObjectId("61f9f09ecff66bbef603831f"), "name" : "Ashwin", "city" : "Mississauga", "favColours" : [ "blue", "coral", "teal" ], "booksRead" : [ { "name" : "Hit Refresh", "author" : "Satya Nadella", "publishYear" : 2020 } ], "userConfig" : { "languagePreference" : "EN", "theme" : "dark" } }
+> 
+> 
+> db.people.update({name: 'Ashwin'}, {$set: {"userConfig.languagePreference": "SP"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> 
+> 
+> db.people.find({name: 'Ashwin'})
+{ "_id" : ObjectId("61f9f09ecff66bbef603831f"), "name" : "Ashwin", "city" : "Mississauga", "favColours" : [ "blue", "coral", "teal" ], "booksRead" : [ { "name" : "Hit Refresh", "author" : "Satya Nadella", "publishYear" : 2020 } ], "userConfig" : { "languagePreference" : "SP", "theme" : "dark" } }
+> 
+> 
+> 
+> db.people.insert({name: 'Ani', city: 'Mississauga', routine: {
+... wakeUpTime: '7AM',
+... lunch: '12PM',
+... sleep: '11PM'
+... }
+... }
+... )
+WriteResult({ "nInserted" : 1 })
+> 
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto", "hasHarbourFront" : true }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto", "hasHarbourFront" : true }
+{ "_id" : 1234, "name" : "Valerie", "city" : "Niagara" }
+{ "_id" : 12345, "name" : "Valerie", "city" : "Niagara" }
+{ "_id" : ObjectId("61f9f09ecff66bbef603831f"), "name" : "Ashwin", "city" : "Mississauga", "favColours" : [ "blue", "coral", "teal" ], "booksRead" : [ { "name" : "Hit Refresh", "author" : "Satya Nadella", "publishYear" : 2020 } ], "userConfig" : { "languagePreference" : "SP", "theme" : "dark" } }
+{ "_id" : ObjectId("61f9f660cff66bbef6038320"), "name" : "Ani", "city" : "Mississauga", "routine" : { "wakeUpTime" : "7AM", "lunch" : "12PM", "sleep" : "11PM" } }
+> 
+> 
+> db.people.update({name: 'Ani'}, {$set: {
+... wakeUpTime: '8AM'
+... }
+... }
+... )
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto", "hasHarbourFront" : true }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto", "hasHarbourFront" : true }
+{ "_id" : 1234, "name" : "Valerie", "city" : "Niagara" }
+{ "_id" : 12345, "name" : "Valerie", "city" : "Niagara" }
+{ "_id" : ObjectId("61f9f09ecff66bbef603831f"), "name" : "Ashwin", "city" : "Mississauga", "favColours" : [ "blue", "coral", "teal" ], "booksRead" : [ { "name" : "Hit Refresh", "author" : "Satya Nadella", "publishYear" : 2020 } ], "userConfig" : { "languagePreference" : "SP", "theme" : "dark" } }
+{ "_id" : ObjectId("61f9f660cff66bbef6038320"), "name" : "Ani", "city" : "Mississauga", "routine" : { "wakeUpTime" : "7AM", "lunch" : "12PM", "sleep" : "11PM" }, "wakeUpTime" : "8AM" }
+> 
+> 
+> db.people.update({name: 'Ani'}, {$set: {
+... "routine.wakeUpTime": "8:30AM"
+... }
+... }
+... )
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> 
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto", "hasHarbourFront" : true }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto", "hasHarbourFront" : true }
+{ "_id" : 1234, "name" : "Valerie", "city" : "Niagara" }
+{ "_id" : 12345, "name" : "Valerie", "city" : "Niagara" }
+{ "_id" : ObjectId("61f9f09ecff66bbef603831f"), "name" : "Ashwin", "city" : "Mississauga", "favColours" : [ "blue", "coral", "teal" ], "booksRead" : [ { "name" : "Hit Refresh", "author" : "Satya Nadella", "publishYear" : 2020 } ], "userConfig" : { "languagePreference" : "SP", "theme" : "dark" } }
+{ "_id" : ObjectId("61f9f660cff66bbef6038320"), "name" : "Ani", "city" : "Mississauga", "routine" : { "wakeUpTime" : "8:30AM", "lunch" : "12PM", "sleep" : "11PM" }, "wakeUpTime" : "8AM" }
+> 
+> 
+> 
+
+
+> db.people.update({name: 'Ani'}, {$unset: {
+... "wakeUpTime": ""
+... }
+... }
+... )
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> 
+> 
+> 
+> db.people.find()
+{ "_id" : ObjectId("61f9d97f1245058de346f890"), "name" : "Han", "city" : "Toronto", "hasHarbourFront" : true }
+{ "_id" : ObjectId("61f9da081245058de346f891"), "name" : "Sherysse", "city" : "Mississauga" }
+{ "_id" : ObjectId("61f9db871245058de346f893"), "name" : "Jessica", "city" : "Hamilton" }
+{ "_id" : ObjectId("61f9db871245058de346f894"), "name" : "George", "city" : "Oakville" }
+{ "_id" : ObjectId("61f9dc0f1245058de346f895"), "name" : "Raj", "city" : "Brampton" }
+{ "_id" : ObjectId("61f9dca71245058de346f896"), "name" : "Ahmed", "city" : "Toronto", "hasHarbourFront" : true }
+{ "_id" : 1234, "name" : "Valerie", "city" : "Niagara" }
+{ "_id" : 12345, "name" : "Valerie", "city" : "Niagara" }
+{ "_id" : ObjectId("61f9f09ecff66bbef603831f"), "name" : "Ashwin", "city" : "Mississauga", "favColours" : [ "blue", "coral", "teal" ], "booksRead" : [ { "name" : "Hit Refresh", "author" : "Satya Nadella", "publishYear" : 2020 } ], "userConfig" : { "languagePreference" : "SP", "theme" : "dark" } }
+{ "_id" : ObjectId("61f9f660cff66bbef6038320"), "name" : "Ani", "city" : "Mississauga", "routine" : { "wakeUpTime" : "8:30AM", "lunch" : "12PM", "sleep" : "11PM" } }

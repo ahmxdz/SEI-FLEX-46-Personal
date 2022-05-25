@@ -1,0 +1,78 @@
+/* 
+    styling for the "span_bold" class, but only if applied to a span tag
+    only applied if this span tag lives within a div tag
+*/
+div span.span_bold {
+    font-weight: bold;
+}
+  
+/* 
+    styling for the "span_bold" class, but only if applied to a div tag
+*/
+div.span_bold {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+/* 
+    Use this to apply styling to the h8 tag
+    This overrides the default font-size
+*/
+h8 {
+    font-size: 18px;
+}
+  
+/* 
+    styling for the "div_display" class which can be applied to any tag
+    CSS flex stylings will be covered more in Week 3
+*/
+.div_display {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+  
+/* 
+    styling for the "div_display" class which can be applied to any tag
+    Examples using margins to create a gap from the div to other elements
+*/
+.divWithMargin {
+    margin-top: 55px;
+    margin-bottom: 55px;
+    margin-left: 10px;
+}
+  
+/* 
+    styling to tag that have the "users_name" id attached to it
+*/
+#users_name {
+    font-weight: bold;
+}
+ 
+/* 
+    styling to div siblings of the divs that have the "midDiv" class assigned to the div tag
+*/
+div.midDiv + div {
+    background-color: red;
+}
+  
+/* 
+    apply a pseudo class to apply a style on hover actions
+*/
+div.midDiv:hover {
+    background-color: blue;
+}
+ 
+/* 
+    apply a pseudo class to apply a style on focus actions, but only on the element with the "nameInput" id
+*/
+#nameInput:focus {
+    background-color: green !important;
+}
+  
+/* 
+    example of the last-child pseudo class where the styling is applied to the last child element of the topDivClass element
+*/
+div.topDivClass div:last-child {
+    background-color: green;
+}

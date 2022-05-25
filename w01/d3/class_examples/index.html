@@ -1,0 +1,132 @@
+<html>
+  <head>
+    <!-- This title shows up in the browser tab -->
+    <title>
+      My Title
+    </title>
+
+    <!-- Import style.css styling file into this html page -->
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <!-- Create a new div applying a topDivClass to it -->
+    <div class ="topDivClass">
+      Top div class
+
+      <!-- Create child divs to the div with the "topDivClass" -->
+      <!-- Appling midDiv styling class to the first one -->
+      <div class="midDiv"> Div within a div </div>
+      <div> Div2 within a div </div>
+      <div> Div3 within a div </div>
+    </div>
+
+    <br>
+    ---------
+    <br>
+    <br>
+    ---------
+    <br>
+    <br>
+    ---------
+    <br>
+
+
+    <!-- Create child divs to the div with the "divWithMargin" to assign stylings to this div to display margins -->
+    <div class="divWithMargin"> Hello, worlds using span classes 
+      <div>
+        <!-- Using "span_bold" class to assign a bold style to this class -->
+        Hello, <span class="span_bold">world</span> with bold
+      </div>
+      <br>
+      <div class="span_bold">
+        Hello, <span>world</span> - no bold
+      </div>
+    </div>
+
+    <br>
+    ---------
+    <br>
+
+    <div class="div_display">
+      <h8>Example linking JS to html</h8>
+
+      <!-- Creating a span with "users_name" id to apply a name to this tag in the script.js file -->
+      <div>
+        Hello, <span id="users_name"></span>
+      </div>
+
+       <!-- Example importing an image -->
+      <img src="nbinLogo.png" />
+    </div>
+
+    <br>
+    ---------
+    <br>
+
+    <!-- Example using the paragraph tag -->
+    <p> This is my Hello World Paragraph</p>
+
+    <br>
+    ---------
+    <br>
+
+    <h4> Table Example </h4>
+
+    <!-- Example using the table tag -->
+    <table id="namesTable">
+      <!-- TR = table row -->
+      <tr>
+        <!-- TH = table heading -->
+        <th>Name</th>
+        <th>Country</th>
+      </tr>
+      <tr>  
+        <!-- Td = table data -->
+        <td>
+          Ashwin Samtani
+        </td>
+        <td>
+          Panama
+        </td>
+      </tr>
+      <tr>  
+        <td>
+          Kareem Draz
+        </td>
+        <td>
+          Canada
+        </td>
+      </tr>
+      <tr>
+        <td>name</td>
+        <td>country</td>
+      </tr>
+    </table>
+   
+   
+    <br>
+    <br>
+
+
+    <label for="nameInput">Name </label>
+    <!-- Input field example used to allow users to input values (text box) -->
+    <input id="nameInput" type="text" 
+    onblur="validateInput(event)"
+    />
+    <br>
+    <label for="countryInput">Country </label>
+    <input id="countryInput" type="text" 
+    onblur="validateInput(event)"/>
+
+    <!-- Call addToTable function from script.js file on button click -->
+    <button id="addToTableBtn" onclick="addToTable(event)"> Add to table </button>
+    
+    <br>
+
+    <!-- Import JS files to this HTML -->
+    <script src="script.js"></script>
+    <script src="arrayOperations.js"></script>
+    <script src="booleanOperators.js"></script>
+  </body>
+</html>

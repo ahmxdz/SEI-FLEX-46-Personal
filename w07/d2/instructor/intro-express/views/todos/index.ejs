@@ -1,0 +1,31 @@
+<body>
+  <h1>Todos</h1>
+  <ul>
+
+
+    <% todos.forEach(function(t) { %>
+      <li>
+        <%= t.todo %>
+          -
+          <%= t.done ? 'done' : 'not done' %>
+      </li>
+      <% }); %>
+
+
+        <br><br><br>
+        <!-- tips : write your javascript and html without tags
+       - do a first pass and put tags on anythign that is JS
+        - 2nd Pass - Decide which JS we actually want to show to the user as HTML (return a value)
+      -->
+        <% todos.forEach(function(todo){ %>
+
+          <!-- <li> Take the trash out - no </li> -->
+          <li>
+            <%= todo.todo%> - <%= todo.done ? 'yes' : 'no' %>
+          </li>
+
+          <% }); %>
+
+
+  </ul>
+</body>

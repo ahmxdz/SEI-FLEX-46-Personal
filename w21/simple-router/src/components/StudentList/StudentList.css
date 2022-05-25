@@ -1,0 +1,21 @@
+.list-container ul{
+    margin-top: 120px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-container ul li{
+    padding: 25px;
+    background-color: #fff;
+    width: 500px;
+    margin-bottom: 8px;
+}
+
+.list-container{
+    justify-content: center;
+    display: flex;
+    
+    background-color: #eee;
+    padding: 0 60px;
+}

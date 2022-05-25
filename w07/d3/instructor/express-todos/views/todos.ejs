@@ -1,0 +1,22 @@
+<body>
+    <h1>Todos for <%= userName%> as of <%= time %></h1>
+    <ul>
+  
+      <% todosList.forEach(function(t) { %>
+        <li>
+          <%= t.todo %>
+            -
+          <%= t.done ? 'done' : 'not done' %>
+        </li>
+        <% }); %>
+  
+  
+          <br><br><br>
+          <!-- tips : write your javascript and html without tags
+         - do a first pass and put tags on anythign that is JS
+          - 2nd Pass - Decide which JS we actually want to show to the user as HTML (return a value)
+        -->
+  
+  
+    </ul>
+  </body>

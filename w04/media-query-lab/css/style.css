@@ -1,0 +1,46 @@
+*{
+    box-sizing: border-box;
+}
+body, html {
+    padding: 0;
+    margin: 0;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /*min-height: 100vh;*/
+    background-color: #eee;
+}
+
+#header, #footer{
+    min-height: 15vh;
+    background-color: #ccc;
+    border: 1px solid #fff;
+    display: flex;
+    flex: 1;
+}
+
+#content{
+    min-height: 70vh;
+    background-color: #9900cc;
+    display: flex;
+    flex: 1;
+}
+
+@media (min-width: 768px){
+    section{
+        display: flex;
+        flex: 1;
+    }
+    #content, footer{
+        min-height: 85vh;
+    }
+    #content {
+        flex-basis: 65%;
+    }
+    #footer{
+        flex-basis: 35%;
+    }
+}
+

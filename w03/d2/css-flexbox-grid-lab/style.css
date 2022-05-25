@@ -1,0 +1,95 @@
+.row{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 40% 32% 30%;
+    /* grid-gap: 1em; */
+  }
+  
+
+.column{
+    display: grid;
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    opacity: 0.3;
+}
+
+
+div{
+  position: relative;
+  left: 0px;
+  
+}
+
+.supplylogo{
+  display: grid;
+  grid-column: 1;
+  grid-row: 1;
+  object-fit: cover;
+  width: 50px;
+  border: 10px solid white;
+  position: relative;
+  left: 30px;
+}
+
+.lifestyle{
+  display: grid;
+  grid-column: 4;
+  grid-row: 2;
+  object-fit: cover;
+  width: 100%;
+  border: 10px solid white;
+}
+
+.men{
+  display: grid;
+  grid-column: 2;
+  grid-row: 2;
+  object-fit: cover;
+  width: 100%;
+  border: 10px solid white;
+}
+
+.women{
+  display: grid;
+  grid-column: 3;
+  grid-row: 2;
+  object-fit: cover;
+  width: 100%;
+  border: 10px solid white;
+  position: relative;
+  
+  
+  
+}
+
+.about{
+  display: grid;
+  grid-column: 3;
+  grid-row: 3;
+  object-fit: cover;
+  width: 150%;
+  border: 10px solid white;
+  position: relative;
+  left: 100px;
+
+}
+
+.blog{
+  display: grid;
+  grid-column: 2;
+  grid-row: 3;
+  object-fit: cover;
+  width: 150%;
+  border: 10px solid white;
+  
+}
+
+.boots{
+  display: grid;
+  grid-column: 2;
+  grid-row: 1;
+  object-fit: cover;
+  width: 300%;
+  border: 10px solid white;
+}
+

@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+
+<form id="new-form" action="/performers/new" method="POST">
+  <label>Name</label>
+  <input type="text" name="name">
+  <label>Date of Birth</label>
+  <input type="date" name="dob">
+  <label>Debut Year</label>
+  <input type="number" name="yearOfFirstMovie"
+  <label>Net Worth</label>
+  <input type="number" name="netWorth">
+  <label>IMDB Link</label>
+  <input type="text" name="imdbUrl">
+  <input type="submit" value="Add Cast">
+</form>
+
+<%- include('../partials/footer') %>
